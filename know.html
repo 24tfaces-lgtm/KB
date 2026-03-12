@@ -33,15 +33,8 @@
       background: var(--bg);
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--link-hover);
-      text-decoration: underline;
-    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
 
     .topbar {
       background: linear-gradient(#ffffff, #f8f9fa);
@@ -129,9 +122,7 @@
       background: #fff;
     }
 
-    .global-menu a:first-child {
-      border-left: 1px solid var(--line-soft);
-    }
+    .global-menu a:first-child { border-left: 1px solid var(--line-soft); }
 
     .global-menu a:hover,
     .global-menu a.is-active {
@@ -145,12 +136,22 @@
       display: grid;
       grid-template-columns: 300px minmax(0, 1fr);
       min-height: calc(100vh - 112px);
+      align-items: stretch;
     }
 
     .sidebar {
       background: var(--panel);
       border-right: 1px solid var(--line);
       padding: 16px 14px 32px;
+    }
+
+    .side-box--sticky {
+      position: sticky;
+      top: 16px;
+      z-index: 3;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+      scrollbar-width: thin;
     }
 
     .mobile-toggle {
@@ -197,9 +198,7 @@
       text-decoration: none;
     }
 
-    .product-box__body {
-      padding: 12px;
-    }
+    .product-box__body { padding: 12px; }
 
     .product-photo {
       text-align: center;
@@ -285,9 +284,7 @@
       font-size: 14px;
     }
 
-    .content-wrap {
-      display: block;
-    }
+    .content-wrap { display: block; }
 
     .article p {
       margin: 0 0 14px;
@@ -325,8 +322,7 @@
       font-size: 14px;
     }
 
-    .simple-table,
-    .infobox {
+    .simple-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
@@ -334,53 +330,112 @@
     }
 
     .simple-table th,
-    .simple-table td,
-    .infobox th,
-    .infobox td {
+    .simple-table td {
       border: 1px solid var(--line-soft);
       padding: 8px 10px;
       text-align: left;
       vertical-align: top;
     }
 
-    .simple-table th,
-    .infobox th {
+    .simple-table th {
       background: var(--panel-2);
       width: 220px;
       font-weight: 600;
     }
 
-    .infobox {
-      background: var(--panel);
-      border: 1px solid var(--line);
-    }
-
-    .infobox caption {
-      caption-side: top;
-      padding: 10px 12px;
-      background: #dfe7f2;
-      border: 1px solid var(--line);
-      border-bottom: 0;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .infobox .image-cell {
-      text-align: center;
+    .disease-switcher,
+    .solution-switcher {
+      border: 1px solid var(--line-soft);
       background: #fff;
+      margin: 12px 0 18px;
     }
 
-    .infobox .image-cell img {
-      width: 150px;
-      max-width: 100%;
-      display: block;
-      margin: 4px auto 8px;
+    .disease-tabs,
+    .solution-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-bottom: 1px solid var(--line-soft);
+      background: var(--panel);
     }
 
-    .infobox .image-cell small {
+    .disease-tab,
+    .solution-tab {
+      border: 0;
+      border-right: 1px solid var(--line-soft);
+      background: transparent;
+      padding: 12px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .disease-tab.is-active,
+    .solution-tab.is-active {
+      background: #fff;
+      font-weight: 700;
+    }
+
+    .disease-panel,
+    .solution-panel {
+      display: none;
+      padding: 16px;
+    }
+
+    .disease-panel.is-active,
+    .solution-panel.is-active { display: block; }
+
+    .disease-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line-soft);
+      background: #fff;
+      padding: 14px;
+    }
+
+    .mini-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .composition-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .ingredient-button {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line-soft);
+      background: #fff;
+      padding: 14px;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease;
+    }
+
+    .ingredient-button:hover {
+      background: #f7faff;
+      border-color: var(--line);
+    }
+
+    .ingredient-button strong {
       display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .ingredient-button span {
+      display: block;
+      font-size: 13px;
       color: var(--muted);
-      font-size: 12px;
     }
 
     .cards {
@@ -400,6 +455,272 @@
       margin-top: 0;
       font-size: 16px;
     }
+
+    .audio-card {
+      border: 1px solid var(--line-soft);
+      background: #fff;
+      padding: 14px;
+      margin: 10px 0 18px;
+    }
+
+    .audio-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .call-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+
+    .call-summary .mini-card ul {
+      margin: 0 0 0 18px;
+      font-size: 14px;
+    }
+
+    .audio-player {
+      border: 1px solid var(--line-soft);
+      background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
+      padding: 16px;
+      border-radius: 14px;
+    }
+
+    .audio-native {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .audio-player__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .audio-player__title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .audio-badge {
+      border: 1px solid var(--line-soft);
+      background: #fff;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .audio-player__row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .audio-player__left,
+    .audio-player__right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .audio-btn,
+    .speed-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      padding: 9px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 999px;
+    }
+
+    .audio-btn {
+      min-width: 126px;
+      font-weight: 700;
+    }
+
+    .speed-btn.is-active {
+      background: #eef3ff;
+      font-weight: 700;
+      border-color: #9fb6ea;
+    }
+
+    .audio-center {
+      min-width: 0;
+    }
+
+    .audio-wave {
+      display: grid;
+      grid-template-columns: repeat(32, minmax(0, 1fr));
+      align-items: end;
+      gap: 3px;
+      height: 46px;
+      margin-bottom: 10px;
+    }
+
+    .audio-wave span {
+      display: block;
+      width: 100%;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #8fb0f2 0%, #4f7fe6 100%);
+      opacity: .9;
+    }
+
+    .audio-progress-wrap {
+      display: grid;
+      gap: 8px;
+    }
+
+    .audio-progress {
+      width: 100%;
+      appearance: none;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #4f7fe6 0%, #4f7fe6 var(--progress, 0%), #d8dde3 var(--progress, 0%), #d8dde3 100%);
+      outline: none;
+      margin: 0;
+    }
+
+    .audio-progress::-webkit-slider-thumb {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #3366cc;
+      cursor: pointer;
+      border: 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    }
+
+    .audio-progress::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #3366cc;
+      cursor: pointer;
+      border: 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    }
+
+    .audio-time {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .script-link {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: #eef3ff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .script-link:hover {
+      text-decoration: none;
+      background: #e3ebff;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(32, 33, 34, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal.is-open { display: flex; }
+
+    .modal__dialog {
+      width: min(820px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 50px rgba(0,0,0,.2);
+    }
+
+    .modal__head {
+      position: sticky;
+      top: 0;
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line-soft);
+      background: var(--panel);
+      box-shadow: 0 1px 0 rgba(0,0,0,.04);
+    }
+
+    .modal__title {
+      font: 400 24px/1.2 Georgia, "Times New Roman", serif;
+    }
+
+    .modal__close {
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .modal__body { padding: 16px; }
+
+    .modal__panel {
+      border: 1px solid var(--line-soft);
+      background: #fff;
+      padding: 16px;
+      min-height: 260px;
+    }
+
+    .ingredient-modal-grid {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .ingredient-visual {
+      border: 1px solid var(--line-soft);
+      background: linear-gradient(180deg, #f9fbff 0%, #eef3ff 100%);
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .ingredient-visual img {
+      width: 100%;
+      max-width: 220px;
+      max-height: 320px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .ingredient-copy p,
+    .ingredient-copy ul {
+      font-size: 15px;
+    }
+
+    .ingredient-copy ul { margin-left: 20px; }
 
     .navbox {
       margin-top: 28px;
@@ -427,24 +748,16 @@
       color: var(--muted);
     }
 
-    
-    }
-
     @media (max-width: 980px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
+      .layout { grid-template-columns: 1fr; }
       .sidebar {
         border-right: 0;
         border-bottom: 1px solid var(--line);
       }
-
       .mobile-toggle { display: block; }
-
-      .sidebar.is-collapsed .side-box {
-        display: none;
-      }
+      .sidebar.is-collapsed .side-box { display: none; }
+      .disease-grid,
+      .ingredient-modal-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 760px) {
@@ -452,27 +765,22 @@
         flex-direction: column;
         align-items: stretch;
       }
-
-      .page {
-        padding: 0 14px 32px;
-      }
-
-      .global-menu__inner {
-        padding: 0;
-      }
-
+      .page { padding: 0 14px 32px; }
+      .global-menu__inner { padding: 0; }
       .global-menu a {
         flex: 1 1 auto;
         text-align: center;
         border-left: 0;
       }
-
       h1 { font-size: 32px; }
       .toc { min-width: 100%; }
-      .cards { grid-template-columns: 1fr; }
+      .cards,
+      .composition-grid,
+      .call-summary { grid-template-columns: 1fr; }
+      .audio-player__row { grid-template-columns: 1fr; }
       .product-summary div { grid-template-columns: 1fr; gap: 4px; }
-      .simple-table th,
-      .infobox th { width: auto; }
+      .simple-table th { width: auto; }
+      .disease-tabs, .solution-tabs { display: grid; grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -503,7 +811,6 @@
       <a href="#">Мужское здоровье</a>
       <a href="#">Витамины и добавки</a>
       <a href="#">Популярные статьи</a>
-      
     </div>
   </nav>
 
@@ -519,7 +826,6 @@
           <a href="#">Новые материалы</a>
           <a href="#">Популярные категории</a>
           <a href="#">Руководства по применению</a>
-          
         </nav>
       </section>
 
@@ -527,7 +833,7 @@
         <div class="side-box__title">Карточка продукта</div>
         <div class="product-box__body">
           <div class="product-photo">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAEjAXADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECAwQF/8QAKhEBAAICAgIBAwQDAAAAAAAAAAECAxESITEEQRMiUWEUcYGRoQRCgf/aAAwDAQACEQMRAD8A8xooorwT2wooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKs6fY3VzqNvcWkIkkukKRIynJZmIAHck8k1k0UV3xjGUXd2Y1sRWlWqSlWjF30sFFfQX7KX7NP7QXx5+An7Jf7Uf7PvxR+Hn7N/7PXxV+NHif8A4Jx/tX/s+/Dj4r/DLw5+0B+0V8LPi7oPw58W+HPBfw98T6L8bP7R+MXxA8I+JvA9zDqGlW3iP4feLvFHxM8D+JrK+0rStQfQfHeofFfQtQ1jSNQ0j1fxA+K9N8W2Wk/CPwC8Uv4i8L6fptlZaB8JvDvhz4i+G/HXx18UXHh3xn4g8U+Gfif410+0sbfQdP8AEXjL4OeC/BPxY8c6f4Y8TeMPCfhnw58ZvDPxH4l1PRvHviLxP4h8N/GnxL8R+EfFfj7UvDviHwn8VPEfwx8S+IPB3gPwN4a8JeAfA3wO8H+HvA3wz4G8D/DvgXwH4c8A+B/B3wz4H8EfA/wAL+BvBvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwP//Z" alt="Упаковка Prostalis" />
+            <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 420'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23f7fbff'/%3E%3Cstop offset='100%25' stop-color='%23dfe9f6'/%3E%3C/linearGradient%3E%3ClinearGradient id='bottle' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%23ffffff'/%3E%3Cstop offset='100%25' stop-color='%23eef3f8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='420' rx='28' fill='url(%23bg)'/%3E%3Crect x='116' y='34' width='88' height='44' rx='10' fill='%23324b6b'/%3E%3Crect x='86' y='70' width='148' height='270' rx='34' fill='url(%23bottle)' stroke='%23a7b7c9' stroke-width='4'/%3E%3Crect x='100' y='110' width='120' height='116' rx='18' fill='%232e5da8'/%3E%3Ctext x='160' y='142' text-anchor='middle' font-family='Arial, sans-serif' font-size='16' font-weight='700' fill='white'%3EMEN'S%3C/text%3E%3Ctext x='160' y='166' text-anchor='middle' font-family='Arial, sans-serif' font-size='16' font-weight='700' fill='white'%3EHEALTH%3C/text%3E%3Ccircle cx='160' cy='195' r='18' fill='none' stroke='white' stroke-width='4'/%3E%3Cpath d='M160 177 L160 214 M146 195 L174 195' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3Crect x='108' y='242' width='104' height='54' rx='12' fill='%23eef4fb' stroke='%23bfd0e2'/%3E%3Ctext x='160' y='264' text-anchor='middle' font-family='Arial, sans-serif' font-size='13' font-weight='700' fill='%2326415f'%3EPROSTALIS%3C/text%3E%3Ctext x='160' y='284' text-anchor='middle' font-family='Arial, sans-serif' font-size='10' fill='%2354695d'%3Ecapsules%3C/text%3E%3Crect x='122' y='304' width='76' height='14' rx='7' fill='%2392b46b'/%3E%3Cellipse cx='160' cy='360' rx='82' ry='16' fill='rgba(0,0,0,0.08)'/%3E%3C/svg%3E" alt="Средство для мужского здоровья" />
             <small>Фотография продукта</small>
           </div>
           <div class="product-summary">
@@ -540,15 +846,17 @@
         </div>
       </section>
 
-      <section class="side-box">
+      <section class="side-box side-box--sticky">
         <div class="side-box__title">Разделы статьи</div>
         <nav class="side-nav" id="sideLinks">
           <a href="#summary">Общая информация</a>
           <a href="#application">Применение</a>
           <a href="#composition">Состав</a>
           <a href="#description">Описание продукта</a>
-          <a href="#diseases">Заболевания</a>
+          <a href="#diseases">Симптоматика</a>
           <a href="#solutions">Решения</a>
+          <a href="#call">Как выглядит звонок</a>
+          <a href="#sales-script">Часть скрипта продажи</a>
           <a href="#contraindications">Противопоказания</a>
           <a href="#related">Похожие продукты</a>
         </nav>
@@ -556,16 +864,15 @@
     </aside>
 
     <main class="page">
-      <div class="page-meta">Материал из ProductWiki — демонстрационный шаблон статьи для общей базы знаний</div>
+      <div class="page-meta">Материал из ProductWiki</div>
       <h1>Prostalis</h1>
 
-      <div class="notice">
-        Это пример вики-страницы для базы знаний. Описание сделано в нейтральном справочном стиле, чтобы карточка выглядела как информационная статья, а не как рекламный баннер.
-      </div>
+      
 
       <div class="content-wrap">
         <article class="article">
-          <p id="summary"><strong>Prostalis</strong> — продукт из категории мужского здоровья, представленный в формате энциклопедической карточки. Такой тип страницы подходит для брендовой базы знаний, продуктового каталога, справочного раздела интернет-магазина или внутреннего портала, где важно быстро показать основную информацию: назначение, состав, особенности приёма и базовые характеристики.</p>
+          <p id="summary"><strong>Prostalis</strong> — комплекс в капсулах для мужчин, разработанный на основе растительных экстрактов и витаминного компонента. В составе объединены экстракт тыквы, крапивы, женьшеня, эврикомы, левзеи, мицелия кордицепса, коры йохимбе и витамин C. Формула ориентирована на курсовой приём и сочетает известные растительные компоненты, которые часто используют в продуктах категории мужского здоровья.</p>
+          <p>Продукт выпускается в упаковках на 20 и 60 капсул. Рекомендуемая схема приёма — по одной капсуле два раза в день после еды, утром и вечером. Такой формат позволяет выбрать короткий ознакомительный курс или вариант на более продолжительный период.</p>
 
           <div class="toc">
             <h2>Содержание</h2>
@@ -574,15 +881,17 @@
               <li><a href="#application">Применение</a></li>
               <li><a href="#composition">Состав</a></li>
               <li><a href="#description">Описание продукта</a></li>
-              <li><a href="#diseases">Заболевания</a></li>
+              <li><a href="#diseases">Симптоматика</a></li>
               <li><a href="#solutions">Решения</a></li>
+              <li><a href="#call">Как выглядит звонок</a></li>
+              <li><a href="#sales-script">Часть скрипта продажи</a></li>
               <li><a href="#contraindications">Противопоказания</a></li>
               <li><a href="#related">Похожие продукты</a></li>
             </ol>
           </div>
 
           <h2 id="application">Применение</h2>
-          <p>Продукт представлен в формате капсул для курсового использования. В демонстрационном описании указана простая схема приёма: по одной капсуле два раза в день после еды, утром и вечером. Такая подача удобна для базы знаний, потому что сразу отвечает на основной пользовательский вопрос о способе использования.</p>
+          <p>Рекомендуемая схема приёма: по одной капсуле два раза в день после еды — утром и вечером.</p>
 
           <table class="simple-table" aria-label="Основные характеристики продукта">
             <tr>
@@ -600,35 +909,205 @@
           </table>
 
           <h2 id="composition">Состав</h2>
-          <p>В описании продукта указана базовая формула на основе растительных компонентов и витамина. Для базы знаний такой раздел можно подавать кратко и понятно, без перегруженных терминов.</p>
-          <ul>
-            <li>экстракт тыквы;</li>
-            <li>экстракт крапивы;</li>
-            <li>экстракт женьшеня;</li>
-            <li>витамин C.</li>
-          </ul>
+          
+          <div class="composition-grid">
+            <button class="ingredient-button" type="button" data-ingredient="pumpkin">
+              <strong>Экстракт тыквы</strong>
+              <span>Подробное описание компонента</span>
+            </button>
+            <button class="ingredient-button" type="button" data-ingredient="nettle">
+              <strong>Экстракт крапивы</strong>
+              <span>Подробное описание компонента</span>
+            </button>
+            <button class="ingredient-button" type="button" data-ingredient="ginseng">
+              <strong>Экстракт женьшеня</strong>
+              <span>Подробное описание компонента</span>
+            </button>
+            <button class="ingredient-button" type="button" data-ingredient="vitaminc">
+              <strong>Витамин C</strong>
+              <span>Подробное описание компонента</span>
+            </button>
+            <button class="ingredient-button" type="button" data-ingredient="tongkatali">
+              <strong>Экстракт корней тонгкат али (эврикома)</strong>
+              <span>Подробное описание компонента</span>
+            </button>
+            <button class="ingredient-button" type="button" data-ingredient="leuzea">
+              <strong>Экстракт корней левзеи</strong>
+              <span>Подробное описание компонента</span>
+            </button>
+            <button class="ingredient-button" type="button" data-ingredient="cordyceps">
+              <strong>Экстракт мицелия кордицепса</strong>
+              <span>Подробное описание компонента</span>
+            </button>
+            <button class="ingredient-button" type="button" data-ingredient="yohimbe">
+              <strong>Экстракт коры йохимбе</strong>
+              <span>Подробное описание компонента</span>
+            </button>
+          </div>
 
           <h2 id="description">Описание продукта</h2>
-          <p>В справочном формате продукт можно описывать как добавку для повседневного курса, где важны удобство применения, понятная дозировка и компактный состав. Такой стиль ближе к энциклопедической подаче и хорошо работает на страницах базы знаний, где пользователь ожидает получить сухую и структурированную информацию.</p>
-          <p>Продукт можно позиционировать как решение для тех, кто выбирает капсульную форму, хочет видеть простую схему использования и предпочитает понятные категории товаров без сложных описаний. На странице базы знаний акцент делается не на рекламных обещаниях, а на удобстве ориентации по разделам и прозрачной структуре материала.</p>
+          <p>Prostalis сочетает растительные экстракты и витаминный компонент в одной формуле. В состав входят экстракт корней тонгкат али (эврикома), экстракт корней левзеи, экстракт мицелия кордицепса, экстракт коры йохимбе, экстракт тыквы, экстракт крапивы, экстракт женьшеня и витамин C.</p>
+          <p>Формула рассчитана на мужчин, которые выбирают курсовой формат приёма и хотят видеть в составе как традиционные растительные компоненты, так и более специализированные экстракты. Сочетание капсульной формы и понятной схемы применения делает продукт удобным для ежедневного использования в рамках курса.</p>
           <ul>
-            <li>капсульная форма для ежедневного применения;</li>
-            <li>простая схема использования утром и вечером;</li>
-            <li>комбинация нескольких растительных компонентов;</li>
-            <li>удобный формат для каталога, витрины или внутренней вики-страницы.</li>
+            <li>многокомпонентный растительный состав;</li>
+            <li>капсульная форма для курсового применения;</li>
+            <li>варианты упаковки на 20 и 60 капсул;</li>
+            <li>схема приёма утром и вечером после еды.</li>
           </ul>
 
-          <h2 id="diseases">Заболевания</h2>
-          <p>В базе знаний можно добавить отдельный раздел с типовыми состояниями и темами, с которыми пользователь обычно связывает поиск подобных продуктов. Такой блок помогает сделать страницу полезнее и ближе к формату энциклопедической статьи.</p>
-          <ul>
-            <li>дискомфорт и ощущение напряжения в области малого таза;</li>
-            <li>частые позывы к мочеиспусканию, особенно в вечернее время;</li>
-            <li>снижение общего комфорта в повседневной жизни;</li>
-            <li>потребность в поддерживающем курсе в рамках категории мужского здоровья.</li>
-          </ul>
+          <h2 id="diseases">Симптоматика заболеваний</h2>
+          <div class="disease-switcher">
+            <div class="disease-tabs" id="diseaseTabs">
+              <button class="disease-tab is-active" type="button" data-disease="ed">Эректильная дисфункция (ЭД)</button>
+              <button class="disease-tab" type="button" data-disease="varicocele">Варикоцеле</button>
+              <button class="disease-tab" type="button" data-disease="prostatitis">Простатит</button>
+              <button class="disease-tab" type="button" data-disease="cystitis">Цистит</button>
+            </div>
 
-          <h2 id="solutions">Решения</h2>
-          <p>Раздел с решениями можно оформить как справочный блок о том, какие подходы рассматривают пользователи в рамках выбранной категории. Здесь хорошо смотрится спокойная информационная подача без резких рекламных формулировок.</p>
+            <section class="disease-panel is-active" data-panel="ed">
+              <p><strong>Эректильная дисфункция (ЭД)</strong>, также известная как импотенция, представляет собой состояние, при котором мужчина испытывает трудности или не способен достичь и/или поддержать достаточно твердую эрекцию для успешного совершения полового акта. Вот некоторые ключевые аспекты ЭД:</p>
+              <div class="disease-grid">
+                <article class="mini-card">
+                  <h3>Симптомы</h3>
+                  <ul>
+                    <li>Трудности с эрекцией: Мужчина может испытывать сложности в получении достаточно твердой эрекции для полового акта.</li>
+                    <li>Снижение желания: ЭД может также сопровождаться сниженным либидо или сексуальным влечением.</li>
+                    <li>Недостаточная длительность эрекции: Эрекция может не поддерживаться достаточно долго для удовлетворительного полового акта.</li>
+                  </ul>
+                </article>
+                <article class="mini-card">
+                  <h3>Риски и факторы риска развития ЭД</h3>
+                  <ul>
+                    <li>Возраст: С возрастом уровень тестостерона, гормона, играющего важную роль в сексуальной функции, может снижаться, что способствует развитию ЭД.</li>
+                    <li>Сосудистые проблемы: Атеросклероз (загрязнение сосудов) может привести к ухудшению кровоснабжения полового члена, что затрудняет эрекцию.</li>
+                    <li>Сахарный диабет: Неуправляемый сахарный диабет может повреждать нервы и сосуды, в том числе те, которые необходимы для эрекции.</li>
+                    <li>Психологические факторы: Стресс, депрессия, тревожность и другие психологические проблемы могут оказать негативное влияние на сексуальную функцию.</li>
+                    <li>Лекарства и медицинские состояния: Некоторые лекарства и медицинские состояния, такие как высокое давление, могут способствовать развитию ЭД.</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <section class="disease-panel" data-panel="varicocele">
+              <p><strong>Варикоцеле</strong> - это состояние, которое происходит, когда вены в мошонке (яичках) становятся расширенными и увеличенными. Это происходит из-за неправильной работы клапанов в венах, которые обычно контролируют поток крови. В результате этого расширения вены становятся похожими на "варикозные вены", которые могут быть видны и ощущаемы.</p>
+              <div class="disease-grid">
+                <article class="mini-card">
+                  <h3>Симптомы</h3>
+                  <ul>
+                    <li>Ощущение тяжести или давления в мошонке.</li>
+                    <li>Отек или увеличение размеров одного из яичек.</li>
+                    <li>Боль или дискомфорт в мошонке, особенно после физической активности или длительного стояния.</li>
+                    <li>Некоторые мужчины могут испытывать беспокойство из-за внешнего вида увеличенных вен.</li>
+                  </ul>
+                </article>
+                <article class="mini-card">
+                  <h3>Последствия</h3>
+                  <ul>
+                    <li>Влияет на сексуальное влечение мужчины, из-за болей снижается интерес к сексу.</li>
+                    <li>Ухудшается кровообращение, эрекция становится слабой вялой, из-за отсутствия сексуальной жизни снижается либидо.</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <section class="disease-panel" data-panel="prostatitis">
+              <p><strong>Простатит</strong> -это воспалительное заболевание предстательной железы, которая находится у мужчин под мочевым пузырем и окружает мочеиспускательный канал. Простатит может возникнуть по разным причинам, включая бактериальные инфекции, неинфекционные факторы или осложнения других заболеваний.</p>
+              <div class="disease-grid">
+                <article class="mini-card">
+                  <h3>Симптомы</h3>
+                  <ul>
+                    <li>Боль или дискомфорт в области малого таза, промежности или нижней части спины.</li>
+                    <li>Боль или жжение при мочеиспускании.</li>
+                    <li>Учащенное мочеиспускание, особенно ночью.</li>
+                    <li>Трудности с началом мочеиспускания или слабый мочевой поток.</li>
+                    <li>Ощущение неполного опорожнения мочевого пузыря.</li>
+                    <li>Болезненные или необычные эякуляции.</li>
+                    <li>Сексуальные расстройства, такие как эректильная дисфункция.</li>
+                    <li>Общая усталость и недомогание.</li>
+                  </ul>
+                </article>
+                <article class="mini-card">
+                  <h3>Риски развития простатита</h3>
+                  <ul>
+                    <li>Инфекции: Бактериальный простатит может развиваться после инфекции мочеполовой системы, мочевыводящих путей или хирургических вмешательств.</li>
+                    <li>Факторы риска: Некоторые факторы, такие как недавние инфекции мочеполовой системы, урологические процедуры или травмы, могут повысить риск развития простатита.</li>
+                    <li>Неактивный образ жизни: Длительное сидение или недостаток физической активности также могут способствовать развитию этого заболевания.</li>
+                    <li>Возраст: Простатит чаще встречается у мужчин после 50 лет.</li>
+                    <li>Стресс и неправильное питание: Длительный стресс и неправильное питание могут ослабить иммунитет и увеличить риск инфекций, включая простатит.</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <section class="disease-panel" data-panel="cystitis">
+              <p><strong>Цистит</strong> - это воспаление мочевого пузыря, органа, который хранит мочу до того момента, пока она не будет удалена из организма. У мужчин цистит не так часто встречается по сравнению с женщинами, потому что у них мочевой путь длиннее и имеет другую структуру.</p>
+              <div class="disease-grid">
+                <article class="mini-card">
+                  <h3>Причины</h3>
+                  <ul>
+                    <li>Инфекция: Бактерии могут проникнуть в мочевой пузырь и вызвать воспаление.</li>
+                    <li>Повреждение: Травма или раздражение мочевого пузыря, например, после хирургической операции или медицинской процедуры, может вызвать цистит.</li>
+                  </ul>
+                </article>
+                <article class="mini-card">
+                  <h3>Симптомы</h3>
+                  <ul>
+                    <li>Частое мочеиспускание: Чувство, что вы должны постоянно ходить в туалет, даже если моча выходит немного.</li>
+                    <li>Боли и жжение при мочеиспускании: Ощущения дискомфорта и боли при мочеиспускании.</li>
+                    <li>Отсутствие контроля: Трудности с удержанием мочи.</li>
+                    <li>Необычная моча: Моча может стать мутной, иметь кровь или неприятный запах.</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+          </div>
+
+          <h2 id="solutions">Как поможет средство</h2>
+          <div class="solution-switcher">
+            <div class="solution-tabs" id="solutionTabs">
+              <button class="solution-tab is-active" type="button" data-solution="ed">Эректильная дисфункция (ЭД)</button>
+              <button class="solution-tab" type="button" data-solution="varicocele">Варикоцеле</button>
+              <button class="solution-tab" type="button" data-solution="prostatitis">Простатит</button>
+              <button class="solution-tab" type="button" data-solution="cystitis">Цистит</button>
+            </div>
+
+            <section class="solution-panel is-active" data-solution-panel="ed">
+              <div class="cards">
+                <section class="card"><h3>Тонгкат Али</h3><p>Тонгкат Али — растение, широко используемое в азиатской медицине для повышения уровня тестостерона и улучшения сексуальной функции. Его действие обусловлено несколькими эффектами:</p><p><strong>Увеличение уровня тестостерона:</strong> Тонгкат Али может стимулировать выработку тестостерона, что способствует повышению либидо, энергии и выносливости. Повышенный тестостерон положительно влияет на эрекцию и сексуальное желание.</p><p><strong>Улучшение эректильной функции:</strong> За счёт стимулирующего действия на выработку тестостерона и улучшения кровообращения в органах малого таза Тонгкат Али способствует улучшению качества эрекции.</p><p><strong>Антистрессовое воздействие:</strong> Это растение также может снижать уровень кортизола, гормона стресса, что положительно сказывается на эректильной функции, так как стресс нередко является причиной её нарушения.</p><p>Тонгкат Али используется для долгосрочного улучшения состояния, и результаты становятся заметны в течение нескольких недель.</p></section>
+                <section class="card"><h3>Кордицепс</h3><p>Кордицепс — это гриб, используемый в китайской медицине для повышения физической выносливости и общего здоровья организма. Его влияние на мужское здоровье выражается в следующих аспектах:</p><p><strong>Повышение энергии и выносливости:</strong> Кордицепс стимулирует выработку АТФ (аденозинтрифосфата), молекулы, являющейся основным источником энергии для клеток. Это способствует повышению уровня энергии и улучшению выносливости, что может положительно сказываться на сексуальной активности.</p><p><strong>Улучшение кровообращения:</strong> Кордицепс способствует расширению кровеносных сосудов и улучшению кровообращения, что важно для поддержания устойчивой эрекции.</p><p><strong>Стимуляция выработки тестостерона:</strong> Хотя эффект Кордицепса на тестостерон менее выражен, чем у Тонгкат Али, исследования показывают, что он также может способствовать небольшому увеличению уровня мужских гормонов.</p><p><strong>Снижение усталости и стресса:</strong> Кордицепс обладает адаптогенными свойствами, что помогает организму справляться со стрессом, который часто вредит сексуальной функции.</p><p>Этот гриб больше подходит для комплексного укрепления организма и улучшения работоспособности.</p></section>
+                <section class="card"><h3>Левзея</h3><p>Левзея, также известная как маралий корень, — это растение, которое часто применяется для восстановления сил и повышения физической активности. Для мужского здоровья она полезна следующими свойствами:</p><p><strong>Повышение физической силы и выносливости:</strong> Левзея считается природным анаболиком, который помогает повысить мышечную массу, выносливость и общее состояние тела. Это положительно сказывается на выносливости в постели.</p><p><strong>Улучшение кровообращения и потенции:</strong> Левзея может усиливать кровообращение, что способствует более устойчивой и длительной эрекции.</p><p><strong>Стимулирующий эффект на центральную нервную систему:</strong> Левзея помогает повысить настроение и снять усталость, что улучшает либидо и сексуальное желание.</p><p><strong>Повышение уровня тестостерона:</strong> Хотя научных данных о её прямом влиянии на тестостерон мало, левзея содержит вещества, которые могут способствовать анаболическим процессам и повышению мужского гормона.</p><p>Левзея подходит для улучшения физической выносливости и силы, что  полезно при эректильной дисфункции.</p></section>
+                <section class="card"><h3>Йохимбе</h3><p>Йохимбе — это кора дерева, широко известная как природный афродизиак, и одна из самых исследованных добавок для лечения эректильной дисфункции. Действие йохимбе заключается в следующем:</p><p><strong>Расширение кровеносных сосудов:</strong> Йохимбин, активное вещество в йохимбе, способствует расширению кровеносных сосудов и увеличению притока крови к половым органам, что способствует улучшению эрекции.</p><p><strong>Стимуляция нервной системы:</strong> Йохимбе возбуждает центральную нервную систему, что может увеличить половое возбуждение и улучшить восприятие полового акта.</p><p><strong>Повышение уровня адреналина:</strong> Йохимбе способствует высвобождению адреналина, что увеличивает уровень энергии и улучшает либидо.</p><p><strong>Рекомендуется для краткосрочного эффекта:</strong> В отличие от других компонентов, эффект йохимбе проявляется довольно быстро, и он подходит для кратковременного улучшения эрекции, но требует осторожности из-за возможных побочных эффектов (например, тахикардии и повышенного давления).</p><p>Йохимбе используется для моментального улучшения эрекции и стимуляции полового влечения.</p></section>
+              </div>
+            </section>
+
+            <section class="solution-panel" data-solution-panel="varicocele">
+              <div class="cards">
+                <section class="card"><h3>Тонгкат Али</h3><p>Тонгкат Али может способствовать повышению уровня тестостерона и улучшению общего самочувствия. Он может быть полезен для поддержки гормонального фона, что косвенно помогает при варикоцеле, так как заболевание может снижать уровень тестостерона.</p></section>
+                <section class="card"><h3>Кордицепс</h3><p>Кордицепс улучшает кровообращение и обладает адаптогенными свойствами, что может быть полезно для общего улучшения состояния организма. Кордицепс может поддерживать сосудистый тонус и увеличивать энергию, что полезно для общей выносливости.</p></section>
+                <section class="card"><h3>Левзея</h3><p>Левзея оказывает общеукрепляющее действие на организм, поддерживает выработку тестостерона и выносливость. Влияние Левзеи на кровообращение умеренное, поэтому она может быть полезна для поддержки физической силы и активности.</p></section>
+                <section class="card"><h3>Йохимбе</h3><p>Йохимбе стимулирует кровообращение, вызывает расширение сосудов и может резко усиливать приток крови к органам малого таза, что потенциально улучшает эректильную функцию.</p></section>
+              </div>
+            </section>
+
+            <section class="solution-panel" data-solution-panel="prostatitis">
+              <div class="cards">
+                <section class="card"><h3>Тонгкат Али</h3><p><strong>Положительное воздействие:</strong> Тонгкат Али повышает уровень тестостерона, что помогает поддерживать нормальную работу предстательной железы. За счёт укрепления гормонального фона Тонгкат Али может поддерживать иммунитет и общую физическую энергию, что полезно при хроническом простатите.</p><p><strong>Улучшение кровообращения:</strong> Этот эффект помогает снизить застойные явления в области малого таза, что может быть полезно для облегчения воспаления.</p><p><strong>Противовоспалительное действие:</strong> Тонгкат Али обладает умеренным противовоспалительным эффектом, который может снизить воспаление и дискомфорт в области простаты, но это дополнительное, а не основное средство.</p></section>
+                <section class="card"><h3>Кордицепс</h3><p><strong>Противовоспалительное и иммуномодулирующее действие:</strong> Кордицепс содержит полисахариды и другие соединения, которые могут снижать воспаление, активируя иммунную систему для борьбы с инфекцией, что особенно важно при инфекционном простатите.</p><p><strong>Улучшение кровообращения:</strong> Кордицепс способствует улучшению кровотока, в том числе в области малого таза, что может облегчить застойные явления и уменьшить воспаление.</p><p><strong>Адаптогенные свойства:</strong> Снимая стресс и повышая общую сопротивляемость организма, Кордицепс помогает в комплексной поддержке при хроническом простатите, особенно если воспаление усугубляется стрессом.</p></section>
+                <section class="card"><h3>Левзея</h3><p><strong>Повышение выносливости и улучшение физического состояния:</strong> Левзея помогает при хроническом простатите, если есть усталость и снижение общего тонуса организма. С помощью левзеи можно увеличить выработку энергии, повысить активность, что поддерживает здоровье половой системы.</p><p><strong>Стимуляция кровообращения:</strong> Левзея улучшает циркуляцию крови и состояние сосудов, что полезно при застойном простатите, но важно учитывать, что она оказывает умеренное влияние и может использоваться в качестве поддерживающего средства.</p><p><strong>Снижение стресса:</strong> Как и Кордицепс, Левзея обладает адаптогенными свойствами, что может помочь уменьшить напряжение, которое часто сопровождает простатит.</p></section>
+                <section class="card"><h3>Йохимбе</h3><p><strong>Стимуляция кровообращения:</strong> Йохимбе улучшает приток крови к половым органам, что может временно облегчить симптомы застойного простатита.</p><p><strong>Стимуляция либидо и снижение эректильной дисфункции:</strong> Это особенно полезно для мужчин, у которых простатит повлиял на сексуальную функцию.</p></section>
+              </div>
+            </section>
+
+            <section class="solution-panel" data-solution-panel="cystitis">
+              <div class="cards">
+                <section class="card"><h3>Тонгкат Али</h3><p><strong>Иммуномодулирующее действие:</strong> Тонгкат Али может помочь укрепить иммунитет, что полезно при хроническом или рецидивирующем цистите. Сильная иммунная система важна для предотвращения повторных инфекций мочевого пузыря.</p><p><strong>Антибактериальное и противовоспалительное действие:</strong> Исследования показывают, что Тонгкат Али обладает умеренным антибактериальным и противовоспалительным эффектом, который может помочь снизить выраженность воспаления в мочевом пузыре, если цистит вызван бактериями.</p><p><strong>Улучшение кровообращения в области таза:</strong> Это может быть полезно при хроническом застойном цистите, так как улучшение кровотока способствует более быстрому восстановлению тканей.</p></section>
+                <section class="card"><h3>Кордицепс</h3><p><strong>Сильное противовоспалительное действие:</strong> Кордицепс хорошо известен как натуральное средство для снижения воспаления. При цистите он может помочь уменьшить отек и дискомфорт, связанные с воспалением слизистой оболочки мочевого пузыря.</p><p><strong>Поддержка иммунитета:</strong> Кордицепс является иммуномодулятором, стимулирует защитные функции организма и помогает бороться с инфекциями. Это особенно важно для предотвращения рецидивов цистита.</p><p><strong>Мочегонное действие:</strong> Кордицепс обладает слабым мочегонным эффектом, что способствует вымыванию бактерий из мочевого пузыря и помогает очистить его от патогенных микроорганизмов.</p></section>
+                <section class="card"><h3>Левзея</h3><p><strong>Поддержка общего тонуса организма:</strong> Левзея поддерживает физическую активность и выносливость, что может быть полезно при хроническом цистите, когда общее состояние организма ослаблено.</p><p><strong>Нормализация кровообращения в органах малого таза:</strong> Умеренное улучшение кровотока в малом тазу может ускорить восстановление тканей и снизить вероятность застойных явлений, которые могут провоцировать воспаление.</p><p><strong>Антистрессовый эффект:</strong> Левзея обладает мягким адаптогенным действием, снижая уровень стресса, который иногда является одним из факторов хронического цистита.</p></section>
+                <section class="card"><h3>Йохимбе</h3><p><strong>Стимуляция кровообращения:</strong> Йохимбе активно расширяет кровеносные сосуды и увеличивает приток крови к области малого таза. Это может быть полезно для кратковременного улучшения кровотока, но при остром цистите такие действия могут усилить воспаление.</p></section>
+              </div>
+            </section>
+          </div>
+          <p>При выборе продукта обычно обращают внимание на состав, длительность курса, формат приёма и сочетание растительных компонентов в одной формуле.</p>
           <ul>
             <li>подбор продуктов в удобной капсульной форме;</li>
             <li>выбор понятной схемы ежедневного приёма;</li>
@@ -636,30 +1115,94 @@
             <li>сравнение упаковок по длительности курса и объёму.</li>
           </ul>
 
+          <h2 id="call">Как выглядит звонок</h2>
+          <div class="audio-card">
+            <h3>Пример звонка по продукту Prostalis</h3>
+            <p>В этом блоке размещена аудиозапись для примера оформления звонка. Плеер встроен прямо в страницу, а сам блок можно использовать для прослушивания записи, связанной с разбором этапов продаж, сценарием разговора и итогом коммуникации.</p>
+            <div class="call-summary">
+              <article class="mini-card">
+                <h3>Что есть в звонке</h3>
+                <ul>
+                  <li>короткое приветствие и согласование разговора;</li>
+                  <li>уточнение потребности клиента;</li>
+                  <li>презентация состава и схемы приёма;</li>
+                  <li>подбор упаковки под курс;</li>
+                  <li>закрытие разговора на подтверждённый результат.</li>
+                </ul>
+              </article>
+              <article class="mini-card">
+                <h3>Чем закончился звонок</h3>
+                <ul>
+                  <li>клиент дослушал презентацию;</li>
+                  <li>ключевые возражения были отработаны;</li>
+                  <li>подобран подходящий формат упаковки;</li>
+                  <li>разговор завершился положительным итогом.</li>
+                </ul>
+              </article>
+            </div>
+            <div class="audio-player">
+              <audio id="callAudio" class="audio-native" preload="metadata" crossorigin="anonymous">
+                <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/0/07/Ute_%281950%29.ogg/Ute_%281950%29.ogg.mp3?download=" type="audio/mpeg" />
+                Ваш браузер не поддерживает встроенное аудио.
+              </audio>
+              <div class="audio-player__top">
+                <div class="audio-player__title">Трек для примера блока звонка</div>
+                <div class="audio-badge">Public domain</div>
+              </div>
+              <div class="audio-player__row">
+                <div class="audio-player__left">
+                  <button class="audio-btn" id="callPlayPause" type="button">▶ Воспроизвести</button>
+                </div>
+                <div class="audio-center">
+                  <div class="audio-wave" aria-hidden="true">
+                    <span style="height:32%"></span><span style="height:60%"></span><span style="height:42%"></span><span style="height:78%"></span>
+                    <span style="height:54%"></span><span style="height:36%"></span><span style="height:68%"></span><span style="height:50%"></span>
+                    <span style="height:88%"></span><span style="height:46%"></span><span style="height:58%"></span><span style="height:74%"></span>
+                    <span style="height:40%"></span><span style="height:66%"></span><span style="height:82%"></span><span style="height:52%"></span>
+                    <span style="height:38%"></span><span style="height:72%"></span><span style="height:48%"></span><span style="height:84%"></span>
+                    <span style="height:44%"></span><span style="height:64%"></span><span style="height:34%"></span><span style="height:76%"></span>
+                    <span style="height:56%"></span><span style="height:69%"></span><span style="height:41%"></span><span style="height:80%"></span>
+                    <span style="height:47%"></span><span style="height:61%"></span><span style="height:35%"></span><span style="height:70%"></span>
+                  </div>
+                  <div class="audio-progress-wrap">
+                    <input class="audio-progress" id="callProgress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Прогресс аудио" style="--progress: 0%;" />
+                    <div class="audio-time">
+                      <span id="callCurrent">00:00</span>
+                      <span id="callDuration">00:00</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="audio-player__right">
+                  <button class="speed-btn is-active" type="button" data-speed="1">1x</button>
+                  <button class="speed-btn" type="button" data-speed="1.25">1.25x</button>
+                  <button class="speed-btn" type="button" data-speed="1.5">1.5x</button>
+                  <button class="speed-btn" type="button" data-speed="2">2x</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <h2 id="sales-script">Часть скрипта продажи</h2>
+          
+          <p>
+            <a href="#script-modal" class="script-link" id="openScriptModal">Открыть скрипт продажи</a>
+          </p>
+
           <h2 id="contraindications">Противопоказания</h2>
-          <p>В информационной карточке можно оставить стандартные ограничения, которые обычно сопровождают продукты подобного типа:</p>
           <ul>
-            <li>не превышать рекомендуемую суточную дозу;</li>
-            <li>не использовать как замену разнообразного и сбалансированного питания;</li>
-            <li>не применять при индивидуальной непереносимости компонентов;</li>
-            <li>не использовать детям до 18 лет.</li>
+            <li>не применять лицам до 18 лет;</li>
+            <li>не применять беременным;</li>
+            <li>не применять в период лактации.</li>
           </ul>
 
           <h2 id="related">Похожие продукты</h2>
-          <p>Внизу страницы можно разместить простой блок со связанными позициями без подробных описаний.</p>
+          
           <div class="cards">
-            <section class="card">
-              <h3>Продукт 1</h3>
-            </section>
-            <section class="card">
-              <h3>Продукт 2</h3>
-            </section>
-            <section class="card">
-              <h3>Продукт 3</h3>
-            </section>
-            <section class="card">
-              <h3>Продукт 4</h3>
-            </section>
+            <section class="card"><h3>Продукт 1</h3></section>
+            <section class="card"><h3>Продукт 2</h3></section>
+            <section class="card"><h3>Продукт 3</h3></section>
+            <section class="card"><h3>Продукт 4</h3></section>
           </div>
 
           <div class="navbox">
@@ -670,11 +1213,44 @@
           </div>
 
           <div class="footer">
-            Последнее изменение: сегодня. Страница адаптивна и оформлена под стиль общей базы знаний с вики-структурой.
+            Последнее изменение: сегодня.
           </div>
         </article>
+      </div>
 
+      <div class="modal" id="scriptModal" aria-hidden="true">
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="scriptModalTitle">
+          <div class="modal__head">
+            <div class="modal__title" id="scriptModalTitle">Скрипт продажи</div>
+            <button class="modal__close" id="closeScriptModal" type="button">Закрыть</button>
+          </div>
+          <div class="modal__body">
+            <div class="modal__panel">
+              <p><strong>Условный скрипт открыт поверх страницы.</strong></p>
+              <p>Здесь можно показать встроенный документ, iframe, PDF, Google Doc или внутреннюю страницу со скриптом продаж.</p>
+              <p><a href="#">Перейти к полному скрипту</a></p>
+              <p><small>Замените ссылку и содержимое модального окна на ваш реальный скрипт.</small></p>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="modal" id="ingredientModal" aria-hidden="true">
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="ingredientModalTitle">
+          <div class="modal__head">
+            <div class="modal__title" id="ingredientModalTitle">Компонент состава</div>
+            <button class="modal__close" id="closeIngredientModal" type="button">Закрыть</button>
+          </div>
+          <div class="modal__body">
+            <div class="ingredient-modal-grid">
+              <div class="ingredient-visual">
+                <img id="ingredientModalImage" alt="Изображение ингредиента" />
+              </div>
+              <div class="ingredient-copy" id="ingredientModalContent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 
@@ -708,6 +1284,310 @@
     });
 
     sections.forEach(section => observer.observe(section));
+
+    const scriptModal = document.getElementById('scriptModal');
+    const openScriptModal = document.getElementById('openScriptModal');
+    const closeScriptModal = document.getElementById('closeScriptModal');
+
+    const openModal = (modal) => {
+      modal?.classList.add('is-open');
+      modal?.setAttribute('aria-hidden', 'false');
+    };
+
+    const closeModal = (modal) => {
+      modal?.classList.remove('is-open');
+      modal?.setAttribute('aria-hidden', 'true');
+    };
+
+    openScriptModal?.addEventListener('click', (event) => {
+      event.preventDefault();
+      openModal(scriptModal);
+    });
+
+    closeScriptModal?.addEventListener('click', () => closeModal(scriptModal));
+
+    scriptModal?.addEventListener('click', (event) => {
+      if (event.target === scriptModal) closeModal(scriptModal);
+    });
+
+    const diseaseTabs = [...document.querySelectorAll('.disease-tab')];
+    const diseasePanels = [...document.querySelectorAll('.disease-panel')];
+
+    diseaseTabs.forEach(button => {
+      button.addEventListener('click', () => {
+        const key = button.dataset.disease;
+        diseaseTabs.forEach(tab => tab.classList.toggle('is-active', tab === button));
+        diseasePanels.forEach(panel => panel.classList.toggle('is-active', panel.dataset.panel === key));
+      });
+    });
+
+    const solutionTabs = [...document.querySelectorAll('.solution-tab')];
+    const solutionPanels = [...document.querySelectorAll('.solution-panel')];
+
+    solutionTabs.forEach(button => {
+      button.addEventListener('click', () => {
+        const key = button.dataset.solution;
+        solutionTabs.forEach(tab => tab.classList.toggle('is-active', tab === button));
+        solutionPanels.forEach(panel => panel.classList.toggle('is-active', panel.dataset.solutionPanel === key));
+      });
+    });
+
+    const ingredientModal = document.getElementById('ingredientModal');
+    const ingredientButtons = [...document.querySelectorAll('.ingredient-button')];
+    const ingredientModalTitle = document.getElementById('ingredientModalTitle');
+    const ingredientModalImage = document.getElementById('ingredientModalImage');
+    const ingredientModalContent = document.getElementById('ingredientModalContent');
+    const closeIngredientModal = document.getElementById('closeIngredientModal');
+
+    const ingredientData = {
+      pumpkin: {
+        title: 'Экстракт тыквы',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Cucurbita_pepo_seeds_in_Shenzhou_7.JPG',
+        html: `
+          <p><strong>Экстракт тыквы</strong> — растительный компонент, который часто используют в комплексах для мужского здоровья и поддерживающих формулах. Он воспринимается как мягкий базовый фитокомпонент и хорошо сочетается с другими экстрактами.</p>
+          <p><strong>Применение экстракта тыквы</strong></p>
+          <p><strong>Проблемы с потенцией:</strong><br><strong>Механизм действия:</strong> экстракт тыквы обычно связывают с общей поддержкой мужского здоровья и включают в состав комплексных формул.<br><strong>Помощь:</strong> он дополняет многокомпонентные продукты и усиливает растительную основу состава.</p>
+          <p><strong>Заболевания суставов:</strong><br><strong>Механизм действия:</strong> компонент чаще рассматривают как часть общего поддерживающего состава.<br><strong>Помощь:</strong> используется как дополнительный растительный элемент в комплексной формуле.</p>
+          <p><strong>Зрение:</strong><br><strong>Механизм действия:</strong> прямое действие обычно не выделяют.<br><strong>Помощь:</strong> его относят к общему растительному блоку продукта.</p>
+          <p><strong>Паразиты:</strong><br><strong>Механизм действия:</strong> в расширенных описаниях этот компонент иногда связывают с поддержкой общего бытового комфорта.<br><strong>Помощь:</strong> чаще играет дополнительную роль в составе.</p>
+          <p><strong>Похудение:</strong><br><strong>Механизм действия:</strong> его могут связывать с более лёгкой фитоподачей и поддержкой общего обменного фона.<br><strong>Помощь:</strong> выступает как нейтральный растительный компонент внутри формулы.</p>
+          <p><strong>Сердечно-сосудистые заболевания:</strong><br><strong>Механизм действия:</strong> прямой акцент обычно не делают.<br><strong>Помощь:</strong> его относят к общему растительному профилю продукта.</p>
+          <p><strong>Дефицит экстракта тыквы</strong><br>Отсутствие этого компонента не вызывает отдельного дефицитного состояния, но уменьшает насыщенность растительной формулы.</p>
+          <ul>
+            <li>состав становится менее узнаваемым по фитопрофилю;</li>
+            <li>теряется один из традиционных растительных компонентов;</li>
+            <li>снижается ощущение полноты формулы.</li>
+          </ul>
+          <p><strong>Рекомендации по применению</strong><br>Экстракт тыквы обычно используют как часть общей формулы капсул или таблеток. Режим применения определяется инструкцией конкретного продукта.</p>`
+      },
+      nettle: {
+        title: 'Экстракт крапивы',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Stinging_Nettle_Leaf_Detail.jpg',
+        html: `
+          <p><strong>Экстракт крапивы</strong> — популярный растительный компонент, который часто включают в фитосоставы и комплексные добавки. Он относится к традиционным ингредиентам растительных формул и хорошо сочетается с другими экстрактами.</p>
+          <p><strong>Применение экстракта крапивы</strong></p>
+          <p><strong>Проблемы с потенцией:</strong><br><strong>Механизм действия:</strong> крапиву обычно рассматривают как часть комплексной мужской формулы.<br><strong>Помощь:</strong> она дополняет состав и усиливает его растительную направленность.</p>
+          <p><strong>Заболевания суставов:</strong><br><strong>Механизм действия:</strong> компонент относят к поддерживающим фитосоставам общего профиля.<br><strong>Помощь:</strong> используется как часть общего блока растительных экстрактов.</p>
+          <p><strong>Зрение:</strong><br><strong>Механизм действия:</strong> прямой акцент обычно не делают.<br><strong>Помощь:</strong> рассматривается как компонент общей формулы, а не целевой ингредиент для зрения.</p>
+          <p><strong>Паразиты:</strong><br><strong>Механизм действия:</strong> в расширенных описаниях крапиву иногда связывают с общей поддержкой организма.<br><strong>Помощь:</strong> чаще всего этот пункт носит дополнительный характер.</p>
+          <p><strong>Похудение:</strong><br><strong>Механизм действия:</strong> крапиву иногда связывают с очищающей и поддерживающей фитоподачей.<br><strong>Помощь:</strong> она усиливает общее восприятие формулы как растительной и комплексной.</p>
+          <p><strong>Сердечно-сосудистые заболевания:</strong><br><strong>Механизм действия:</strong> прямую направленность обычно не выделяют.<br><strong>Помощь:</strong> компонент рассматривают как часть общего фитопрофиля продукта.</p>
+          <p><strong>Дефицит экстракта крапивы</strong><br>Отсутствие этого компонента не создаёт самостоятельного дефицита, но делает растительную формулу менее насыщенной.</p>
+          <ul>
+            <li>состав выглядит менее традиционным;</li>
+            <li>теряется один из знакомых фитокомпонентов;</li>
+            <li>ослабляется восприятие продукта как растительного комплекса.</li>
+          </ul>
+          <p><strong>Рекомендации по применению</strong><br>Экстракт крапивы используют как часть общей схемы применения продукта и не отделяют по режиму от других компонентов формулы.</p>`
+      },
+      ginseng: {
+        title: 'Экстракт женьшеня',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Ginsengpflanze.jpg',
+        html: `
+          <p><strong>Женьшень</strong> — один из самых узнаваемых растительных компонентов в адаптационных и поддерживающих формулах. Его часто связывают с тонусом, активностью и насыщенным фитосоставом.</p>
+          <p><strong>Применение экстракта женьшеня</strong></p>
+          <p><strong>Проблемы с потенцией:</strong><br><strong>Механизм действия:</strong> женьшень часто связывают с общим тонусом, активностью и мужскими формулами.<br><strong>Помощь:</strong> он усиливает восприятие состава как более выраженного и насыщенного.</p>
+          <p><strong>Заболевания суставов:</strong><br><strong>Механизм действия:</strong> иногда рассматривается как часть поддерживающего комплекса общего действия.<br><strong>Помощь:</strong> добавляет формуле глубину и узнаваемость.</p>
+          <p><strong>Зрение:</strong><br><strong>Механизм действия:</strong> прямой акцент обычно не делают.<br><strong>Помощь:</strong> компонент относят к общему поддерживающему блоку состава.</p>
+          <p><strong>Паразиты:</strong><br><strong>Механизм действия:</strong> не является главным акцентом в этой теме.<br><strong>Помощь:</strong> выступает как часть общей комплексной формулы.</p>
+          <p><strong>Похудение:</strong><br><strong>Механизм действия:</strong> иногда его связывают с активностью и вовлечённостью в программы образа жизни.<br><strong>Помощь:</strong> может рассматриваться как элемент комплексного подхода.</p>
+          <p><strong>Сердечно-сосудистые заболевания:</strong><br><strong>Механизм действия:</strong> прямую направленность обычно не выделяют.<br><strong>Помощь:</strong> чаще показывают как часть общего фитокомплекса.</p>
+          <p><strong>Дефицит женьшеня</strong><br>Отсутствие женьшеня не вызывает отдельного дефицитного состояния, но убирает из состава один из самых узнаваемых и сильных по восприятию компонентов.</p>
+          <ul>
+            <li>формула становится менее выраженной по ощущению тонуса;</li>
+            <li>теряется компонент с высокой узнаваемостью;</li>
+            <li>снижается насыщенность восприятия состава.</li>
+          </ul>
+          <p><strong>Рекомендации по применению</strong><br>Экстракт женьшеня чаще всего используют в составе капсул и комплексных добавок. Его применение определяется общей инструкцией по продукту.</p>`
+      },
+      vitaminc: {
+        title: 'Витамин C',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Slices_of_orange.JPG',
+        html: `
+          <p><strong>Витамин C</strong> — один из самых известных витаминных компонентов, который часто добавляют в составы пищевых добавок и комплексных формул. Он хорошо воспринимается как привычная и понятная часть состава.</p>
+          <p><strong>Применение витамина C</strong></p>
+          <p><strong>Проблемы с потенцией:</strong><br><strong>Механизм действия:</strong> прямую специализированную роль обычно не выделяют, но витамин C рассматривают как общеукрепляющий компонент.<br><strong>Помощь:</strong> его присутствие делает формулу более полной и знакомой.</p>
+          <p><strong>Заболевания суставов:</strong><br><strong>Механизм действия:</strong> витамин C можно рассматривать как часть общей поддерживающей витаминной базы.<br><strong>Помощь:</strong> усиливает восприятие формулы как более комплексной.</p>
+          <p><strong>Зрение:</strong><br><strong>Механизм действия:</strong> витамин C часто относят к привычным витаминам общего профиля.<br><strong>Помощь:</strong> его удобно показывать как универсальный компонент состава.</p>
+          <p><strong>Паразиты:</strong><br><strong>Механизм действия:</strong> прямой акцент обычно не делают.<br><strong>Помощь:</strong> он выступает как часть общего поддерживающего фона продукта.</p>
+          <p><strong>Похудение:</strong><br><strong>Механизм действия:</strong> иногда его связывают с общей активностью и полнотой витаминного профиля.<br><strong>Помощь:</strong> добавляет формуле баланс и узнаваемость.</p>
+          <p><strong>Сердечно-сосудистые заболевания:</strong><br><strong>Механизм действия:</strong> может относиться к общему витаминному блоку поддержки.<br><strong>Помощь:</strong> воспринимается как стандартная часть комплексной формулы.</p>
+          <p><strong>Дефицит витамина C в формуле</strong><br>Отсутствие витамина C не означает дефицит продукта, но делает состав менее привычным и менее универсальным по восприятию.</p>
+          <ul>
+            <li>состав выглядит менее полным;</li>
+            <li>убирается один из самых понятных витаминных компонентов;</li>
+            <li>снижается ощущение сбалансированности формулы.</li>
+          </ul>
+          <p><strong>Рекомендации по применению</strong><br>Витамин C используют в составе капсул, таблеток и комплексных добавок. Его режим применения следует общей инструкции по продукту.</p>`
+      },
+      tongkatali: {
+        title: 'Экстракт корней тонгкат али (эврикома)',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Eurycoma_longifolia_1.jpg/960px-Eurycoma_longifolia_1.jpg',
+        html: `
+          <p><strong>Эврикома (Eurycoma longifolia)</strong>, также известная как длиннолистная эврикома или Tongkat Ali, является растением, родом из Юго-Восточной Азии, в частности из Малайзии и Индонезии. Этот компонент часто используют как один из самых заметных и специализированных ингредиентов формулы.</p>
+          <p><strong>Применение эврикомы</strong></p>
+          <p><strong>Проблемы с потенцией:</strong><br><strong>Механизм действия:</strong> в описаниях компонента обычно указывают активные соединения, которые связывают с поддержкой либидо, выработки тестостерона и общего сексуального тонуса.<br><strong>Как подают помощь:</strong> эврикому часто показывают как компонент для продуктов, ориентированных на мужское здоровье, потенцию и качество курса.</p>
+          <p><strong>Заболевания суставов:</strong><br><strong>Механизм действия:</strong> в маркетинговой подаче компоненту нередко приписывают противовоспалительные свойства.<br><strong>Как подают помощь:</strong> в длинных описаниях его могут связывать с поддержкой подвижности и общего комфорта.</p>
+          <p><strong>Зрение:</strong><br><strong>Механизм действия:</strong> прямое влияние обычно не выделяют, но иногда описывают косвенную поддержку общего обмена веществ и тонуса организма.<br><strong>Как подают помощь:</strong> такой пункт чаще используют как дополнительное расширение описания компонента.</p>
+          <p><strong>Паразиты:</strong><br><strong>Механизм действия:</strong> в расширенных текстах эврикому могут описывать как компонент с антимикробными и антипаразитарными свойствами.<br><strong>Как подают помощь:</strong> в карточке это можно показать как дополнительную функцию поддержки общего здоровья.</p>
+          <p><strong>Похудение:</strong><br><strong>Механизм действия:</strong> в описаниях эврикому иногда связывают с обменом веществ, уровнем гормонов и поддержкой мышечной массы.<br><strong>Как подают помощь:</strong> её могут включать в блоки о комплексном подходе к форме и активности.</p>
+          <p><strong>Сердечно-сосудистые заболевания:</strong><br><strong>Механизм действия:</strong> в длинных описаниях указывают антиоксидантные свойства и связь с кровообращением.<br><strong>Как подают помощь:</strong> компонент могут описывать как часть общей поддержки организма.</p>
+          <p><strong>Дефицит эврикомы</strong><br>Отсутствие этого компонента не вызывает отдельного дефицитного состояния, но может означать отсутствие его поддерживающего действия в составе комплексной формулы.</p>
+          <ul>
+            <li>в описаниях его связывают со снижением поддержки либидо и общего тонуса;</li>
+            <li>отсутствие компонента убирает из формулы акцент на специализированный растительный экстракт;</li>
+            <li>в маркетинговой карточке это часто называют потерей одного из ключевых активов состава.</li>
+          </ul>
+          <p><strong>Рекомендации по применению</strong><br>Эврикома обычно используется в виде экстрактов, капсул, таблеток и комплексных добавок для мужского здоровья. Дозировку и формат лучше привязывать к инструкции конкретного продукта и производителю.</p>`
+      },
+      leuzea: {
+        title: 'Экстракт корней левзеи',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Rhaponticum_carthamoides_002.JPG',
+        html: `
+          <p><strong>Левзея</strong>, также известная как маралий корень, — это растение, которое часто применяется для восстановления сил и повышения физической активности. Для мужского здоровья она рассматривается как компонент комплексных формул с упором на выносливость и общий тонус.</p>
+          <p><strong>Применение левзеи</strong></p>
+          <p><strong>Проблемы с потенцией:</strong><br><strong>Механизм действия:</strong> левзею обычно связывают с тонусом, активностью и общей насыщенностью формулы.<br><strong>Помощь:</strong> её рассматривают как компонент, который усиливает профиль мужской добавки.</p>
+          <p><strong>Заболевания суставов:</strong><br><strong>Механизм действия:</strong> левзею относят к поддерживающим фитокомпонентам общего действия.<br><strong>Помощь:</strong> она усиливает ощущение многосоставного подхода.</p>
+          <p><strong>Зрение:</strong><br><strong>Механизм действия:</strong> прямую направленность обычно не выделяют.<br><strong>Помощь:</strong> компонент может рассматриваться как часть общего поддерживающего комплекса.</p>
+          <p><strong>Паразиты:</strong><br><strong>Механизм действия:</strong> в этой теме левзея обычно не является центральным ингредиентом.<br><strong>Помощь:</strong> может фигурировать как часть общей формулы.</p>
+          <p><strong>Похудение:</strong><br><strong>Механизм действия:</strong> иногда её связывают с активностью, тонусом и вовлечённостью в программы образа жизни.<br><strong>Помощь:</strong> может подаваться как дополнительный компонент комплексного подхода.</p>
+          <p><strong>Сердечно-сосудистые заболевания:</strong><br><strong>Механизм действия:</strong> прямую направленность обычно не выделяют.<br><strong>Помощь:</strong> её относят к общему блоку поддерживающих растительных ингредиентов.</p>
+          <p><strong>Дефицит левзеи</strong><br>Отсутствие левзеи не вызывает отдельного дефицитного состояния, но убирает из формулы один из заметных растительных компонентов.</p>
+          <ul>
+            <li>состав становится менее насыщенным по фитоподаче;</li>
+            <li>убирается ботанически выразительный компонент;</li>
+            <li>ослабляется восприятие формулы как более глубокой и специализированной.</li>
+          </ul>
+          <p><strong>Рекомендации по применению</strong><br>Экстракт корней левзеи обычно подают как часть комплексной схемы применения продукта и не отделяют от общей инструкции по курсу.</p>`
+      },
+      cordyceps: {
+        title: 'Экстракт мицелия кордицепса',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Puppen-Kernkeule_Cordyceps_militaris.jpg',
+        html: `
+          <p><strong>Кордицепс</strong> — гриб, который часто используют в китайской медицине для повышения физической выносливости и общего здоровья организма. В мужских формулах его обычно рассматривают как заметный компонент для энергии, кровообращения и адаптационной поддержки.</p>
+          <p><strong>Применение кордицепса</strong></p>
+          <p><strong>Проблемы с потенцией:</strong><br><strong>Механизм действия:</strong> кордицепс часто рассматривают как более редкий и премиальный компонент, усиливающий восприятие состава.<br><strong>Помощь:</strong> его используют как необычный элемент, который делает продукт заметнее среди аналогов.</p>
+          <p><strong>Заболевания суставов:</strong><br><strong>Механизм действия:</strong> компонент могут относить к общей поддерживающей формуле и расширенному фитосоставу.<br><strong>Помощь:</strong> это усиливает ощущение глубины и многоуровневости продукта.</p>
+          <p><strong>Зрение:</strong><br><strong>Механизм действия:</strong> прямой акцент обычно не делают.<br><strong>Помощь:</strong> его рассматривают как часть общей современной формулы.</p>
+          <p><strong>Паразиты:</strong><br><strong>Механизм действия:</strong> в этой теме кордицепс обычно не является центральным ингредиентом.<br><strong>Помощь:</strong> может включаться как часть комплексного состава.</p>
+          <p><strong>Похудение:</strong><br><strong>Механизм действия:</strong> иногда кордицепс связывают с активностью, ресурсностью и общим образом более технологичной формулы.<br><strong>Помощь:</strong> может подаваться как часть комплексного подхода к образу жизни и активности.</p>
+          <p><strong>Сердечно-сосудистые заболевания:</strong><br><strong>Механизм действия:</strong> в расширенном описании кордицепс обычно фигурирует как один из элементов общей поддерживающей композиции.<br><strong>Помощь:</strong> его лучше рассматривать как акцентный, но не узконаправленный ингредиент.</p>
+          <p><strong>Дефицит кордицепса</strong><br>Отсутствие кордицепса не приводит к отдельному дефициту, но убирает из формулы один из наиболее редких и премиально воспринимаемых компонентов.</p>
+          <ul>
+            <li>состав становится менее необычным и менее запоминающимся;</li>
+            <li>теряется ощущение современной сложной формулы;</li>
+            <li>уменьшается визуальная и смысловая глубина состава.</li>
+          </ul>
+          <p><strong>Рекомендации по применению</strong><br>Экстракт мицелия кордицепса обычно используют в составе капсульных и комплексных продуктов. Его применение следует общей инструкции по комплексу.</p>`
+      },
+      yohimbe: {
+        title: 'Экстракт коры йохимбе',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/2/24/Pau_de_cabinda.jpg',
+        html: `
+          <p><strong>Йохимбе</strong> — это кора дерева, широко известная как природный афродизиак, и один из наиболее заметных компонентов в специализированных мужских формулах. Его часто связывают с краткосрочным стимулирующим действием и акцентной подачей состава.</p>
+          <p><strong>Применение йохимбе</strong></p>
+          <p><strong>Проблемы с потенцией:</strong><br><strong>Механизм действия:</strong> йохимбе часто связывают с выраженной направленностью мужских формул и более акцентной подачей состава.<br><strong>Помощь:</strong> этот компонент обычно относят к самым заметным в тематических комплексах.</p>
+          <p><strong>Заболевания суставов:</strong><br><strong>Механизм действия:</strong> в этой теме йохимбе обычно не выделяют как основной элемент.<br><strong>Помощь:</strong> он может рассматриваться как часть расширенной специализированной формулы.</p>
+          <p><strong>Зрение:</strong><br><strong>Механизм действия:</strong> прямую роль в теме зрения обычно не подчёркивают.<br><strong>Помощь:</strong> этот пункт остаётся вторичным и вспомогательным.</p>
+          <p><strong>Паразиты:</strong><br><strong>Механизм действия:</strong> йохимбе не является центральным компонентом для такой темы.<br><strong>Помощь:</strong> может фигурировать как часть расширенного описания состава.</p>
+          <p><strong>Похудение:</strong><br><strong>Механизм действия:</strong> иногда его связывают с активностью и более выраженным характером состава.<br><strong>Помощь:</strong> этот блок может использоваться как дополнительный элемент расширенного описания.</p>
+          <p><strong>Сердечно-сосудистые заболевания:</strong><br><strong>Механизм действия:</strong> прямую направленность обычно не выделяют.<br><strong>Помощь:</strong> компонент может упоминаться как часть общей специализированной растительной формулы.</p>
+          <p><strong>Дефицит йохимбе</strong><br>Отсутствие йохимбе не вызывает отдельного дефицитного состояния, но может сделать формулу менее акцентной и менее специализированной по восприятию.</p>
+          <ul>
+            <li>снижается выразительность состава для мужской аудитории;</li>
+            <li>теряется один из заметных специализированных компонентов;</li>
+            <li>формула выглядит менее насыщенной по подаче.</li>
+          </ul>
+          <p><strong>Рекомендации по применению</strong><br>Экстракт коры йохимбе лучше описывать как часть общей формулы продукта и связывать его режим применения только с инструкцией конкретного комплекса.</p>`
+      }
+    };
+
+    ingredientButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const key = button.dataset.ingredient;
+        const item = ingredientData[key];
+        if (!item) return;
+        ingredientModalTitle.textContent = item.title;
+        ingredientModalImage.src = item.image;
+        ingredientModalImage.alt = item.title;
+        ingredientModalContent.innerHTML = item.html;
+        openModal(ingredientModal);
+      });
+    });
+
+    closeIngredientModal?.addEventListener('click', () => closeModal(ingredientModal));
+
+    ingredientModal?.addEventListener('click', (event) => {
+      if (event.target === ingredientModal) closeModal(ingredientModal);
+    });
+
+    const callAudio = document.getElementById('callAudio');
+    const callPlayPause = document.getElementById('callPlayPause');
+    const callCurrent = document.getElementById('callCurrent');
+    const callDuration = document.getElementById('callDuration');
+    const callProgress = document.getElementById('callProgress');
+    const speedButtons = [...document.querySelectorAll('.speed-btn')];
+
+    const formatTime = (value) => {
+      if (!Number.isFinite(value)) return '00:00';
+      const minutes = Math.floor(value / 60);
+      const seconds = Math.floor(value % 60);
+      return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    };
+
+    const updateAudioUI = () => {
+      const current = callAudio?.currentTime || 0;
+      const duration = callAudio?.duration || 0;
+      if (callCurrent) callCurrent.textContent = formatTime(current);
+      if (callDuration) callDuration.textContent = formatTime(duration);
+      if (callProgress && duration > 0) {
+        const value = (current / duration) * 100;
+        callProgress.value = String(value);
+        callProgress.style.setProperty('--progress', `${value}%`);
+      }
+      if (callPlayPause) {
+        callPlayPause.textContent = callAudio && !callAudio.paused ? '⏸ Пауза' : '▶ Воспроизвести';
+      }
+    };
+
+    callAudio?.addEventListener('timeupdate', updateAudioUI);
+    callAudio?.addEventListener('loadedmetadata', updateAudioUI);
+    callAudio?.addEventListener('ended', updateAudioUI);
+    callAudio?.addEventListener('pause', updateAudioUI);
+    callAudio?.addEventListener('play', updateAudioUI);
+
+    callPlayPause?.addEventListener('click', () => {
+      if (!callAudio) return;
+      if (callAudio.paused) {
+        callAudio.play();
+      } else {
+        callAudio.pause();
+      }
+      updateAudioUI();
+    });
+
+    callProgress?.addEventListener('input', () => {
+      if (!callAudio || !callAudio.duration) return;
+      const value = Number(callProgress.value);
+      callProgress.style.setProperty('--progress', `${value}%`);
+      callAudio.currentTime = (value / 100) * callAudio.duration;
+      updateAudioUI();
+    });
+
+    speedButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const speed = Number(button.dataset.speed || '1');
+        if (callAudio) callAudio.playbackRate = speed;
+        speedButtons.forEach(item => item.classList.toggle('is-active', item === button));
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal(scriptModal);
+        closeModal(ingredientModal);
+      }
+    });
   </script>
 </body>
 </html>
