@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prostalis — база знаний</title>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --paper: #ffffff;
+      --line: #a2a9b1;
+      --line-soft: #c8ccd1;
+      --text: #202122;
+      --muted: #54595d;
+      --link: #0645ad;
+      --link-hover: #0b0080;
+      --panel: #f8f9fa;
+      --panel-2: #eaecf0;
+      --notice: #fff8d6;
+      --notice-line: #f1d26a;
+      --max: 1500px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    .topbar {
+      background: linear-gradient(#ffffff, #f8f9fa);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand__mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      font: 28px Georgia, "Times New Roman", serif;
+    }
+
+    .brand__title {
+      font: 28px Georgia, "Times New Roman", serif;
+      line-height: 1;
+    }
+
+    .brand__subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: min(370px, 100%);
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+    }
+
+    .search input {
+      width: 100%;
+      border: 0;
+      outline: none;
+      font-size: 14px;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .global-menu {
+      background: #fff;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .global-menu__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .global-menu a {
+      display: inline-block;
+      padding: 10px 14px;
+      border-right: 1px solid var(--line-soft);
+      font-size: 13px;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .global-menu a:first-child {
+      border-left: 1px solid var(--line-soft);
+    }
+
+    .global-menu a:hover,
+    .global-menu a.is-active {
+      background: var(--panel);
+      text-decoration: none;
+    }
+
+    .layout {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      min-height: calc(100vh - 112px);
+    }
+
+    .sidebar {
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+      padding: 16px 14px 32px;
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .side-box {
+      background: #fff;
+      border: 1px solid var(--line);
+      margin-bottom: 16px;
+    }
+
+    .side-box__title {
+      background: var(--panel-2);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 2px;
+      padding: 8px;
+    }
+
+    .side-nav a {
+      display: block;
+      padding: 6px 8px;
+      font-size: 14px;
+      border-radius: 2px;
+    }
+
+    .side-nav a:hover,
+    .side-nav a.active {
+      background: #eef3ff;
+      text-decoration: none;
+    }
+
+    .product-box__body {
+      padding: 12px;
+    }
+
+    .product-photo {
+      text-align: center;
+      padding: 8px 0 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .product-photo img {
+      width: 170px;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto 8px;
+    }
+
+    .product-photo small {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .product-summary {
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .product-summary div {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 8px;
+      align-items: start;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .product-summary div:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .product-summary strong { color: var(--muted); }
+
+    .page {
+      background: var(--paper);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      padding: 0 28px 40px;
+      min-width: 0;
+    }
+
+    .page-meta {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line-soft);
+      font: 400 40px/1.1 Georgia, "Times New Roman", serif;
+    }
+
+    h2 {
+      margin: 28px 0 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line-soft);
+      font: 400 25px/1.2 Georgia, "Times New Roman", serif;
+    }
+
+    h3 {
+      margin: 18px 0 8px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .notice {
+      margin: 16px 0 18px;
+      padding: 12px 14px;
+      border: 1px solid var(--notice-line);
+      background: var(--notice);
+      font-size: 14px;
+    }
+
+    .content-wrap {
+      display: block;
+    }
+
+    .article p {
+      margin: 0 0 14px;
+      font-size: 15px;
+    }
+
+    .article ul,
+    .article ol {
+      margin: 0 0 16px 22px;
+      font-size: 15px;
+    }
+
+    .article li + li { margin-top: 7px; }
+
+    .toc {
+      width: fit-content;
+      min-width: 330px;
+      max-width: 100%;
+      margin: 18px 0 22px;
+      padding: 10px 14px;
+      border: 1px solid var(--line-soft);
+      background: var(--panel);
+    }
+
+    .toc h2 {
+      margin: 0 0 10px;
+      padding: 0;
+      border: 0;
+      font: 700 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 14px;
+    }
+
+    .simple-table,
+    .infobox {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .simple-table th,
+    .simple-table td,
+    .infobox th,
+    .infobox td {
+      border: 1px solid var(--line-soft);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .simple-table th,
+    .infobox th {
+      background: var(--panel-2);
+      width: 220px;
+      font-weight: 600;
+    }
+
+    .infobox {
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .infobox caption {
+      caption-side: top;
+      padding: 10px 12px;
+      background: #dfe7f2;
+      border: 1px solid var(--line);
+      border-bottom: 0;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .infobox .image-cell {
+      text-align: center;
+      background: #fff;
+    }
+
+    .infobox .image-cell img {
+      width: 150px;
+      max-width: 100%;
+      display: block;
+      margin: 4px auto 8px;
+    }
+
+    .infobox .image-cell small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .card {
+      border: 1px solid var(--line-soft);
+      background: #fff;
+      padding: 14px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .navbox {
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .navbox__head {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel-2);
+      font-weight: 700;
+    }
+
+    .navbox__body {
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line-soft);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    
+    }
+
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mobile-toggle { display: block; }
+
+      .sidebar.is-collapsed .side-box {
+        display: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar__inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .page {
+        padding: 0 14px 32px;
+      }
+
+      .global-menu__inner {
+        padding: 0;
+      }
+
+      .global-menu a {
+        flex: 1 1 auto;
+        text-align: center;
+        border-left: 0;
+      }
+
+      h1 { font-size: 32px; }
+      .toc { min-width: 100%; }
+      .cards { grid-template-columns: 1fr; }
+      .product-summary div { grid-template-columns: 1fr; gap: 4px; }
+      .simple-table th,
+      .infobox th { width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <div class="brand__mark">W</div>
+        <div>
+          <div class="brand__title">ProductWiki</div>
+          <div class="brand__subtitle">общая база знаний о продуктах, категориях и формулах</div>
+        </div>
+      </div>
+      <label class="search" aria-label="Поиск по базе знаний">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21L16.65 16.65M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#54595d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <input type="text" placeholder="Искать в базе знаний" />
+      </label>
+    </div>
+  </header>
+
+  <nav class="global-menu" aria-label="Общее меню базы знаний">
+    <div class="global-menu__inner">
+      <a class="is-active" href="#">Главная</a>
+      <a href="#">Каталог продуктов</a>
+      <a href="#">Категории</a>
+      <a href="#">Мужское здоровье</a>
+      <a href="#">Витамины и добавки</a>
+      <a href="#">Популярные статьи</a>
+      
+    </div>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar is-collapsed" id="sidebar">
+      <button class="mobile-toggle" id="mobileToggle">Показать левое меню</button>
+
+      <section class="side-box">
+        <div class="side-box__title">Навигация по базе знаний</div>
+        <nav class="side-nav">
+          <a href="#">Главная страница</a>
+          <a href="#">Все продукты</a>
+          <a href="#">Новые материалы</a>
+          <a href="#">Популярные категории</a>
+          <a href="#">Руководства по применению</a>
+          
+        </nav>
+      </section>
+
+      <section class="side-box product-box">
+        <div class="side-box__title">Карточка продукта</div>
+        <div class="product-box__body">
+          <div class="product-photo">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAEjAXADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECAwQF/8QAKhEBAAICAgIBAwQDAAAAAAAAAAECAxESITEEQRMiUWEUcYGRoQRCgf/aAAwDAQACEQMRAD8A8xooorwT2wooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKs6fY3VzqNvcWkIkkukKRIynJZmIAHck8k1k0UV3xjGUXd2Y1sRWlWqSlWjF30sFFfQX7KX7NP7QXx5+An7Jf7Uf7PvxR+Hn7N/7PXxV+NHif8A4Jx/tX/s+/Dj4r/DLw5+0B+0V8LPi7oPw58W+HPBfw98T6L8bP7R+MXxA8I+JvA9zDqGlW3iP4feLvFHxM8D+JrK+0rStQfQfHeofFfQtQ1jSNQ0j1fxA+K9N8W2Wk/CPwC8Uv4i8L6fptlZaB8JvDvhz4i+G/HXx18UXHh3xn4g8U+Gfif410+0sbfQdP8AEXjL4OeC/BPxY8c6f4Y8TeMPCfhnw58ZvDPxH4l1PRvHviLxP4h8N/GnxL8R+EfFfj7UvDviHwn8VPEfwx8S+IPB3gPwN4a8JeAfA3wO8H+HvA3wz4G8D/DvgXwH4c8A+B/B3wz4H8EfA/wAL+BvBvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwN4H8DeB/BvgfwP//Z" alt="Упаковка Prostalis" />
+            <small>Фотография продукта</small>
+          </div>
+          <div class="product-summary">
+            <div><strong>Название</strong><span>Prostalis</span></div>
+            <div><strong>Форма</strong><span>Капсулы</span></div>
+            <div><strong>Объём</strong><span>20 / 60 капсул</span></div>
+            <div><strong>Курс</strong><span>10 / 30 дней</span></div>
+            <div><strong>Категория</strong><span>Мужское здоровье</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="side-box">
+        <div class="side-box__title">Разделы статьи</div>
+        <nav class="side-nav" id="sideLinks">
+          <a href="#summary">Общая информация</a>
+          <a href="#application">Применение</a>
+          <a href="#composition">Состав</a>
+          <a href="#description">Описание продукта</a>
+          <a href="#diseases">Заболевания</a>
+          <a href="#solutions">Решения</a>
+          <a href="#contraindications">Противопоказания</a>
+          <a href="#related">Похожие продукты</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="page">
+      <div class="page-meta">Материал из ProductWiki — демонстрационный шаблон статьи для общей базы знаний</div>
+      <h1>Prostalis</h1>
+
+      <div class="notice">
+        Это пример вики-страницы для базы знаний. Описание сделано в нейтральном справочном стиле, чтобы карточка выглядела как информационная статья, а не как рекламный баннер.
+      </div>
+
+      <div class="content-wrap">
+        <article class="article">
+          <p id="summary"><strong>Prostalis</strong> — продукт из категории мужского здоровья, представленный в формате энциклопедической карточки. Такой тип страницы подходит для брендовой базы знаний, продуктового каталога, справочного раздела интернет-магазина или внутреннего портала, где важно быстро показать основную информацию: назначение, состав, особенности приёма и базовые характеристики.</p>
+
+          <div class="toc">
+            <h2>Содержание</h2>
+            <ol>
+              <li><a href="#summary">Общая информация</a></li>
+              <li><a href="#application">Применение</a></li>
+              <li><a href="#composition">Состав</a></li>
+              <li><a href="#description">Описание продукта</a></li>
+              <li><a href="#diseases">Заболевания</a></li>
+              <li><a href="#solutions">Решения</a></li>
+              <li><a href="#contraindications">Противопоказания</a></li>
+              <li><a href="#related">Похожие продукты</a></li>
+            </ol>
+          </div>
+
+          <h2 id="application">Применение</h2>
+          <p>Продукт представлен в формате капсул для курсового использования. В демонстрационном описании указана простая схема приёма: по одной капсуле два раза в день после еды, утром и вечером. Такая подача удобна для базы знаний, потому что сразу отвечает на основной пользовательский вопрос о способе использования.</p>
+
+          <table class="simple-table" aria-label="Основные характеристики продукта">
+            <tr>
+              <th>Рекомендуемый режим</th>
+              <td>По 1 капсуле утром и вечером после еды</td>
+            </tr>
+            <tr>
+              <th>Варианты упаковки</th>
+              <td>20 капсул и 60 капсул</td>
+            </tr>
+            <tr>
+              <th>Ориентировочный курс</th>
+              <td>Около 10 или 30 дней в зависимости от выбранного объёма</td>
+            </tr>
+          </table>
+
+          <h2 id="composition">Состав</h2>
+          <p>В описании продукта указана базовая формула на основе растительных компонентов и витамина. Для базы знаний такой раздел можно подавать кратко и понятно, без перегруженных терминов.</p>
+          <ul>
+            <li>экстракт тыквы;</li>
+            <li>экстракт крапивы;</li>
+            <li>экстракт женьшеня;</li>
+            <li>витамин C.</li>
+          </ul>
+
+          <h2 id="description">Описание продукта</h2>
+          <p>В справочном формате продукт можно описывать как добавку для повседневного курса, где важны удобство применения, понятная дозировка и компактный состав. Такой стиль ближе к энциклопедической подаче и хорошо работает на страницах базы знаний, где пользователь ожидает получить сухую и структурированную информацию.</p>
+          <p>Продукт можно позиционировать как решение для тех, кто выбирает капсульную форму, хочет видеть простую схему использования и предпочитает понятные категории товаров без сложных описаний. На странице базы знаний акцент делается не на рекламных обещаниях, а на удобстве ориентации по разделам и прозрачной структуре материала.</p>
+          <ul>
+            <li>капсульная форма для ежедневного применения;</li>
+            <li>простая схема использования утром и вечером;</li>
+            <li>комбинация нескольких растительных компонентов;</li>
+            <li>удобный формат для каталога, витрины или внутренней вики-страницы.</li>
+          </ul>
+
+          <h2 id="diseases">Заболевания</h2>
+          <p>В базе знаний можно добавить отдельный раздел с типовыми состояниями и темами, с которыми пользователь обычно связывает поиск подобных продуктов. Такой блок помогает сделать страницу полезнее и ближе к формату энциклопедической статьи.</p>
+          <ul>
+            <li>дискомфорт и ощущение напряжения в области малого таза;</li>
+            <li>частые позывы к мочеиспусканию, особенно в вечернее время;</li>
+            <li>снижение общего комфорта в повседневной жизни;</li>
+            <li>потребность в поддерживающем курсе в рамках категории мужского здоровья.</li>
+          </ul>
+
+          <h2 id="solutions">Решения</h2>
+          <p>Раздел с решениями можно оформить как справочный блок о том, какие подходы рассматривают пользователи в рамках выбранной категории. Здесь хорошо смотрится спокойная информационная подача без резких рекламных формулировок.</p>
+          <ul>
+            <li>подбор продуктов в удобной капсульной форме;</li>
+            <li>выбор понятной схемы ежедневного приёма;</li>
+            <li>ориентация на состав с растительными компонентами;</li>
+            <li>сравнение упаковок по длительности курса и объёму.</li>
+          </ul>
+
+          <h2 id="contraindications">Противопоказания</h2>
+          <p>В информационной карточке можно оставить стандартные ограничения, которые обычно сопровождают продукты подобного типа:</p>
+          <ul>
+            <li>не превышать рекомендуемую суточную дозу;</li>
+            <li>не использовать как замену разнообразного и сбалансированного питания;</li>
+            <li>не применять при индивидуальной непереносимости компонентов;</li>
+            <li>не использовать детям до 18 лет.</li>
+          </ul>
+
+          <h2 id="related">Похожие продукты</h2>
+          <p>Внизу страницы можно разместить простой блок со связанными позициями без подробных описаний.</p>
+          <div class="cards">
+            <section class="card">
+              <h3>Продукт 1</h3>
+            </section>
+            <section class="card">
+              <h3>Продукт 2</h3>
+            </section>
+            <section class="card">
+              <h3>Продукт 3</h3>
+            </section>
+            <section class="card">
+              <h3>Продукт 4</h3>
+            </section>
+          </div>
+
+          <div class="navbox">
+            <div class="navbox__head">См. также</div>
+            <div class="navbox__body">
+              Каталог продуктов · Мужское здоровье · Витамины и добавки · Энциклопедические карточки товаров
+            </div>
+          </div>
+
+          <div class="footer">
+            Последнее изменение: сегодня. Страница адаптивна и оформлена под стиль общей базы знаний с вики-структурой.
+          </div>
+        </article>
+
+        </div>
+    </main>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const sideLinks = [...document.querySelectorAll('#sideLinks a')];
+    const sections = sideLinks
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    mobileToggle?.addEventListener('click', () => {
+      sidebar.classList.toggle('is-collapsed');
+      mobileToggle.textContent = sidebar.classList.contains('is-collapsed')
+        ? 'Показать левое меню'
+        : 'Скрыть левое меню';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const current = '#' + entry.target.id;
+          sideLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === current);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-25% 0px -60% 0px',
+      threshold: 0.1
+    });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
